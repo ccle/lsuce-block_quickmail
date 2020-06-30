@@ -52,11 +52,17 @@ $PAGE->set_pagetype('block-quickmail');
 $PAGE->set_pagelayout('standard');
 $PAGE->set_title(block_quickmail_string::get('pluginname') . ': ' . block_quickmail_string::get('queued'));
 
-if ($pageparams['courseid']) {
-    $PAGE->navbar->add(block_quickmail_string::get('pluginname'),
-        new moodle_url('/blocks/quickmail/qm.php',
-        array('courseid' => $pageparams['courseid'])));
-}
+// START UCLA MOD: CCLE-9326 - Suppress Quickmail UI when clicking breadcrumb.
+//
+// if ($pageparams['courseid']) {
+//     $PAGE->navbar->add(block_quickmail_string::get('pluginname'),
+//         new moodle_url('/blocks/quickmail/qm.php',
+//         array('courseid' => $pageparams['courseid'])));
+// }
+
+$PAGE->navbar->add(block_quickmail_string::get('pluginname'));
+
+// END UCLA MOD: CCLE-9326.
 
 $PAGE->navbar->add(block_quickmail_string::get('queued'));
 $PAGE->set_heading(block_quickmail_string::get('pluginname') . ': ' . block_quickmail_string::get('queued'));
