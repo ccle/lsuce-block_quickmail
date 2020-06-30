@@ -45,8 +45,14 @@ block_quickmail_plugin::require_user_can_send('compose', $USER, $coursecontext);
 $PAGE->set_pagetype('block-quickmail');
 $PAGE->set_pagelayout('standard');
 $PAGE->set_title(block_quickmail_string::get('pluginname'));
-$PAGE->navbar->add(block_quickmail_string::get('pluginname'),
-    new moodle_url('/blocks/quickmail/qm.php', array('courseid' => $courseid)));
+
+// START UCLA MOD: CCLE-9326 - Suppress Quickmail UI when clicking breadcrumb.
+//
+// $PAGE->navbar->add(block_quickmail_string::get('pluginname'),
+//     new moodle_url('/blocks/quickmail/qm.php', array('courseid' => $courseid)));
+
+// END UCLA MOD: CCLE-9326.
+
 $PAGE->set_heading(block_quickmail_string::get('pluginname'));
 $PAGE->requires->css(new moodle_url('/blocks/quickmail/style.css'));
 $coursenode = $PAGE->navigation->find($courseid, navigation_node::TYPE_COURSE);
